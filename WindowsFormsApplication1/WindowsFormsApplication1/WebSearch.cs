@@ -19,6 +19,8 @@ namespace WindowsFormsApplication1
             this.b = b;
         }
 
+        //searches for the given url
+        //bool isNew tells the function if the search is new or a previous search
         public void search(String s, bool isNew)
         {
             if (String.IsNullOrEmpty(s)) return;
