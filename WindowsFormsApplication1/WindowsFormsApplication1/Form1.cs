@@ -10,24 +10,37 @@ using System.Windows.Forms;
 
 namespace WindowsFormsApplication1
 {
-    public partial class Form1 : Form
+    public partial class WebBrowser : Form
     {
         private WebSearch ws;
-        public Form1()
+        public WebBrowser()
         {
             InitializeComponent();
             ws = new WebSearch(webBrowser1);
+        }
+        private void formatString(String s)
+        {
+            if (!s.StartsWith("http://") && !s.StartsWith("https://"))
+            {
+                s = "http://" + s;
+            }
         }
 
         //Searches for address given when the go button is pressed
         private void search_btn_Click(object sender, EventArgs e)
         {
-            ws.search(textBox1.Text, true);
+
+            String s = textBox1.Text;
+            formatString(s);
+            ws.search(s, true);
+            historyToolStripMenuItem.DropDownItems.Add(s);
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
-           ws.search(textBox1.Text, true);
+            String s = textBox1.Text;
+            formatString(s);
+            ws.search(s, true);
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -46,6 +59,11 @@ namespace WindowsFormsApplication1
         private void button2_Click(object sender, EventArgs e)
         {
             ws.search_prev();
+        }
+
+        private void historyToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

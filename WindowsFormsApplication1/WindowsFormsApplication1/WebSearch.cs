@@ -9,12 +9,13 @@ namespace WindowsFormsApplication1
 {
     class WebSearch
     {
-        private List<string> site_list;
-        private WebBrowser b;
+        private List<string> site_list, history;
+        private System.Windows.Forms.WebBrowser b;
         int current_index;
-        public WebSearch(WebBrowser b)
+        public WebSearch(System.Windows.Forms.WebBrowser b)
         {
             site_list = new List<string>();
+            history = new List<string>();
             current_index = 0;
             this.b = b;
         }
@@ -39,6 +40,7 @@ namespace WindowsFormsApplication1
                 return;
             }
 
+            history.Add(s);
 
             if (isNew)
             {

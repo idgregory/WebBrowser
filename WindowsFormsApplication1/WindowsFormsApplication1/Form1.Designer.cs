@@ -1,6 +1,6 @@
 ﻿namespace WindowsFormsApplication1
 {
-    partial class Form1
+    partial class WebBrowser
     {
         /// <summary>
         /// Required designer variable.
@@ -33,6 +33,10 @@
             this.webBrowser1 = new System.Windows.Forms.WebBrowser();
             this.back_btn = new System.Windows.Forms.Button();
             this.prev_btn = new System.Windows.Forms.Button();
+            this.pageSetupDialog1 = new System.Windows.Forms.PageSetupDialog();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // go_btn
@@ -51,6 +55,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(286, 20);
             this.textBox1.TabIndex = 1;
+            this.textBox1.Text = "youb";
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // webBrowser1
@@ -81,7 +86,24 @@
             this.prev_btn.UseVisualStyleBackColor = true;
             this.prev_btn.Click += new System.EventHandler(this.button2_Click);
             // 
-            // Form1
+            // menuStrip1
+            // 
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.historyToolStripMenuItem});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(958, 24);
+            this.menuStrip1.TabIndex = 5;
+            this.menuStrip1.Text = "menuStrip1";
+            // 
+            // historyToolStripMenuItem
+            // 
+            this.historyToolStripMenuItem.Name = "historyToolStripMenuItem";
+            this.historyToolStripMenuItem.Size = new System.Drawing.Size(57, 20);
+            this.historyToolStripMenuItem.Text = "History";
+            this.historyToolStripMenuItem.Click += new System.EventHandler(this.historyToolStripMenuItem_Click);
+            // 
+            // WebBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -91,8 +113,12 @@
             this.Controls.Add(this.webBrowser1);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.go_btn);
-            this.Name = "Form1";
-            this.Text = "Form1";
+            this.Controls.Add(this.menuStrip1);
+            this.MainMenuStrip = this.menuStrip1;
+            this.Name = "WebBrowser";
+            this.Text = "WebBrowser";
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -105,6 +131,9 @@
         private System.Windows.Forms.WebBrowser webBrowser1;
         private System.Windows.Forms.Button back_btn;
         private System.Windows.Forms.Button prev_btn;
+        private System.Windows.Forms.PageSetupDialog pageSetupDialog1;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
     }
 }
 
