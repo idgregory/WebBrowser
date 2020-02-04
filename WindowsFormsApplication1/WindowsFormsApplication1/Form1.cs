@@ -19,16 +19,12 @@ namespace WindowsFormsApplication1
             InitializeComponent();
             ws = new WebSearch(webBrowser1);
             curr_string = null;
-
         }
         private void formatString()
         {
             if (String.IsNullOrEmpty(curr_string)) return;
             if (curr_string.Equals("about:blank")) return;
-            if (!curr_string.StartsWith("http://") && !curr_string.StartsWith("https://"))
-            {
-                curr_string = "http://" + curr_string;
-            }
+            if (!curr_string.StartsWith("http://") && !curr_string.StartsWith("https://")) curr_string = "http://" + curr_string;
         }
 
         //Searches for address given when the go button is pressed
@@ -37,16 +33,20 @@ namespace WindowsFormsApplication1
 
             curr_string = textBox1.Text;
             formatString();
-            ws.search(curr_string, true);
+            ws.search(curr_string);
+            toolStripComboBox1.BeginUpdate();
             toolStripComboBox1.Items.Add(curr_string);
+            toolStripComboBox1.EndUpdate();
         }
 
         private void textBox1_Enter(object sender, EventArgs e)
         {
             curr_string = textBox1.Text;
             formatString();
-            ws.search(curr_string, true);
+            ws.search(curr_string);
+            toolStripComboBox1.BeginUpdate();
             toolStripComboBox1.Items.Add(curr_string);
+            toolStripComboBox1.EndUpdate();
         }
 
         private void textBox1_KeyDown(object sender, KeyEventArgs e)
@@ -55,27 +55,21 @@ namespace WindowsFormsApplication1
             {
                 curr_string = textBox1.Text;
                 formatString();
-                ws.search(curr_string, true);
+                ws.search(curr_string);
+                toolStripComboBox1.BeginUpdate();
                 toolStripComboBox1.Items.Add(curr_string);
+                toolStripComboBox1.EndUpdate();
             }
         }
 
         private void button1_Click(object sender, EventArgs e)
         {
-
-            curr_string = textBox1.Text;
-            formatString();
-            toolStripComboBox1.Items.Add(curr_string);
-            ws.search_back();
+            ws.goBackwards();
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
-
-            curr_string = textBox1.Text;
-            formatString();
-            toolStripComboBox1.Items.Add(curr_string);
-            ws.search_prev();
+            ws.goForward();
         }
 
         private void historyToolStripMenuItem_Click(object sender, EventArgs e)
@@ -86,6 +80,21 @@ namespace WindowsFormsApplication1
         private void toolStripComboBox1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void webBrowser1_DocumentCompleted(object sender, WebBrowserDocumentCompletedEventArgs e)
+        {
+
+        }
+
+        private void button1_Click_1(object sender, EventArgs e)
+        {
+            ws.refresh();
         }
     }
 }

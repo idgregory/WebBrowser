@@ -37,6 +37,7 @@
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.historyToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripComboBox1 = new System.Windows.Forms.ToolStripComboBox();
+            this.refresh_btn = new System.Windows.Forms.Button();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -58,7 +59,7 @@
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(427, 26);
             this.textBox1.TabIndex = 1;
-            this.textBox1.Text = "youb";
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.textBox1.KeyDown += new System.Windows.Forms.KeyEventHandler(this.textBox1_KeyDown);
             // 
             // webBrowser1
@@ -67,8 +68,10 @@
             this.webBrowser1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.webBrowser1.MinimumSize = new System.Drawing.Size(30, 31);
             this.webBrowser1.Name = "webBrowser1";
+            this.webBrowser1.ScriptErrorsSuppressed = true;
             this.webBrowser1.Size = new System.Drawing.Size(1401, 771);
             this.webBrowser1.TabIndex = 2;
+            this.webBrowser1.DocumentCompleted += new System.Windows.Forms.WebBrowserDocumentCompletedEventHandler(this.webBrowser1_DocumentCompleted);
             // 
             // back_btn
             // 
@@ -88,7 +91,7 @@
             this.prev_btn.Name = "prev_btn";
             this.prev_btn.Size = new System.Drawing.Size(112, 35);
             this.prev_btn.TabIndex = 4;
-            this.prev_btn.Text = "Prev";
+            this.prev_btn.Text = "Forward";
             this.prev_btn.UseVisualStyleBackColor = true;
             this.prev_btn.Click += new System.EventHandler(this.button2_Click);
             // 
@@ -120,11 +123,22 @@
             this.toolStripComboBox1.Text = "Scroll Down";
             this.toolStripComboBox1.Click += new System.EventHandler(this.toolStripComboBox1_Click);
             // 
+            // refresh_btn
+            // 
+            this.refresh_btn.Location = new System.Drawing.Point(20, 38);
+            this.refresh_btn.Name = "refresh_btn";
+            this.refresh_btn.Size = new System.Drawing.Size(112, 35);
+            this.refresh_btn.TabIndex = 6;
+            this.refresh_btn.Text = "Refresh";
+            this.refresh_btn.UseVisualStyleBackColor = true;
+            this.refresh_btn.Click += new System.EventHandler(this.button1_Click_1);
+            // 
             // WebBrowser
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1437, 952);
+            this.Controls.Add(this.refresh_btn);
             this.Controls.Add(this.prev_btn);
             this.Controls.Add(this.back_btn);
             this.Controls.Add(this.webBrowser1);
@@ -153,6 +167,7 @@
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem historyToolStripMenuItem;
         private System.Windows.Forms.ToolStripComboBox toolStripComboBox1;
+        private System.Windows.Forms.Button refresh_btn;
     }
 }
 
